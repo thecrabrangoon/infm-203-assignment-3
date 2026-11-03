@@ -11,6 +11,9 @@ input format:
         find most visited page using group-by operation
         compute average time spent per page
         output results based on format in assignment rubric
+
+Assumptions:
+    - When counting visits per page, we consider each visit a unique countable instance regardless of which user is visiting the page and if they have visited the page previously
 '''
 
 import pandas as pd
@@ -24,8 +27,14 @@ data = {
 df = pd.DataFrame(data)
 
 time_per_user = df.groupby(['UserID'])[['Duration']].sum()
-time_per_page = df.groupby(['Page'])[['Duration']].sum()
+grouped_per_page = df.groupby(['Page'])[['Duration']]
+time_per_page = grouped_per_page.mean()
+most_visited_page = grouped_per_page.count().max()
 
+# TODO: match assignment output
 print(time_per_user)
+print("\n")
 print(time_per_page)
+print("\n")
+print(most_visited_page)
 
