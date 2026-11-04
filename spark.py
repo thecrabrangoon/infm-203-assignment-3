@@ -17,6 +17,7 @@ Assumptions:
 '''
 
 import pandas as pd
+from tabulate import tabulate
 
 data = {
     'UserID': ['A', 'B', 'A', 'C', 'B', 'A', 'C', 'C'],
@@ -26,15 +27,19 @@ data = {
 
 df = pd.DataFrame(data)
 
-time_per_user = df.groupby(['UserID'])[['Duration']].sum()
+time_per_user = df.groupby(['UserID'], sort=True)[['Duration']].sum().sort_values(by='UserID').rename(columns={'Duration': 'Total Duration in Seconds'})
 grouped_per_page = df.groupby(['Page'])[['Duration']]
-time_per_page = grouped_per_page.mean()
-most_visited_page = grouped_per_page.count().max()
+time_per_page = grouped_per_page.mean().sort_values(by='Duration').rename(columns={'Duration': 'Average Time in Seconds'})
+most_visited_page = grouped_per_page.count().sort_values(by='Duration', ascending=False).rename(columns={'Duration': 'Number of Visits'}).head(1)
 
-# TODO: match assignment output
-print(time_per_user)
+print("Total Time Spent Per User:")
+print(tabulate(time_per_user, headers='keys', tablefmt='psql'))
 print("\n")
-print(time_per_page)
+print("Most Visited Page:")
+print(tabulate(most_visited_page, headers='keys', tablefmt='psql'))
 print("\n")
-print(most_visited_page)
+print("Average Time Spent Per Page:")
+print(tabulate(time_per_page, headers='keys', tablefmt='psql', floatfmt='.2f'))
+
+
 
