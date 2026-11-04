@@ -15,7 +15,7 @@ Please make sure to install the pandas and tabulate libraries.
 main.py is set up to run the Spark simulation.
 
 1. Open main.py, and edit the `data` dictionary to include your desired input data.
-2. Install the necessary dependenciesL
+2. Install the necessary dependencies:
 ```
 python -m venv venv
 source ./venv/bin/activate
