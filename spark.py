@@ -2,8 +2,13 @@
 
 Implements a simple simulation of Spark data processing for user data of a website. Each data entry has a unique User ID, the page the user visited, and how long in seconds they spent on the page.
 
+Running this file as main will execute the spark_simulation() function, detailed below. Example data is stored in the `data` variable under the main definition. If you'd like to input your own data, edit this variable prior to running the file.
+
+Prerequisite:
+This library requires the pandas and tabulate libraries. Please run `python -m pip install pandas tabulate` before using this module or running this file.
+
 Functions:
-spark_simulation() -- public function, runs spark simulation by performing calculations and outputting to console
+spark_simulation() -- public function, runs spark simulation by performing calculations and outputting to console.
 _report_time_spent_per_user() -- Calculate and output time spent per user on the website.
 _report_most_visited_page() -- Calculate and output the most visited page on the website.
 _report_avg_time_per_page() -- Calculate and output the average time in seconds each page of the website was visited.
@@ -81,6 +86,17 @@ def spark_simulation(data):
     _report_most_visited_page(df)
 
     _report_avg_time_per_page(df)
+
+
+if __name__ == "__main__":
+    
+    data = {
+        'UserID': ['A', 'B', 'A', 'C', 'B', 'A', 'C', 'C'],
+        'Page': ['Home', 'About', 'Home', 'Contact', 'Home', 'About', 'Home', 'About'],
+        'Duration': [30, 40, 25, 35, 20, 15, 50, 45]
+    }
+
+    spark_simulation(data)
 
 
 
