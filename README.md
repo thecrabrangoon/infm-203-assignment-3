@@ -8,9 +8,20 @@ Simple Spark simulation using the pandas library to process data about users vis
 
 The Spark simulation can be run via main.py, or through your own python file using the spark module.
 
+Please make sure to install the pandas and tabulate libraries.
+
 ### Using main.py
 
-main.py is set up to run the Spark simulation. Simply open main.py, update the `data` dictionary with your desired input data, then run `python main.py`.
+main.py is set up to run the Spark simulation.
+
+1. Open main.py, and edit the `data` dictionary to include your desired input data.
+2. Install the necessary dependenciesL
+```
+python -m venv venv
+source ./venv/bin/activate
+python -m pip install -r requirements.txt
+```
+3. Run `python main.py`
 
 ### Calling the spark module
 
