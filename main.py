@@ -1,3 +1,15 @@
+"""main module
+
+Call main() to run Spark simluation implemented in spark module.
+
+Input data is stored in dictionary data, with the following keys:
+    UserID -- list of unique User IDs
+    Page -- list of strings with names of website page user visited
+    Duration -- list of ints, number of seconds user visited a given page
+
+Data in the data dictionary is collated by the same index in the lists stored at each key. For example, the first data entry is found at data['UserID'][0], data['Page'][0], data['Duration'][0]
+"""
+
 from spark import spark_simulation
 
 data = {
